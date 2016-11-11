@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="ogre" class="com.csitim.sc.model.Character">
+        <constructor-arg value="Ogre"/>
+        <constructor-arg value="100"/>
+        <constructor-arg ref="ogreWeapon"/>
+    </bean>
+
+    <bean id="igen" class="com.csitim.sc.model.Character">
+        <constructor-arg value="Igen"/>
+        <constructor-arg value="100"/>
+        <constructor-arg ref="ogreWeapon"/>
+    </bean>
+
+    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon">
+        <constructor-arg value="Ogre's weapon"/>
+        <constructor-arg value="50"/>
+    </bean>
+
+</beans>
