@@ -4,6 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="myBeanNameAwarePostProcessor" class="com.csitim.sc.postprocessors.MyBeanNameAwarePostProcessor"></bean>
+
     <bean id="ogre" class="com.csitim.sc.model.Character">
         <constructor-arg value="Ogre"/>
         <constructor-arg value="100"/>
@@ -16,7 +18,7 @@
         <constructor-arg ref="ogreWeapon"/>
     </bean>
 
-    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod">
+    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod" >
         <constructor-arg value="Ogre's weapon"/>
         <constructor-arg value="50"/>
     </bean>
