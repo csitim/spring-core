@@ -1,17 +1,22 @@
 package com.csitim.sc.model;
 
 import com.csitim.sc.postprocessors.MyBeanNameAware;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Timea_Csiszar on 11/11/2016.
  */
 public class Weapon implements MyBeanNameAware {
+
+    private static final Logger logger= LoggerFactory.getLogger(Weapon.class);
+
     private String name;
     private int hit;
     private String beanName;
 
     public Weapon(String name, int hit) {
-        System.out.println("Weapon constructor called");
+        logger.info("Weapon constructor called");
         this.name = name;
         this.hit = hit;
     }
@@ -24,16 +29,12 @@ public class Weapon implements MyBeanNameAware {
         return hit;
     }
 
-    public String getBeanName() {
-        return beanName;
+    public void myInitMethod() {
+        logger.info("Weapon myInitMethod called");
     }
 
-    public void myInitMethod(){
-        System.out.println("Weapon myInitMethod called");
-    }
-
-    public void myDestroyMethod(){
-        System.out.println("Weapon myDestroyMethod called");
+    public void myDestroyMethod() {
+        logger.info("Weapon myDestroyMethod called");
     }
 
     @Override
