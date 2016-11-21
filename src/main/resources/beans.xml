@@ -16,7 +16,7 @@
         <constructor-arg ref="ogreWeapon"/>
     </bean>
 
-    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon">
+    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod">
         <constructor-arg value="Ogre's weapon"/>
         <constructor-arg value="50"/>
     </bean>

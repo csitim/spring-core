@@ -8,6 +8,7 @@ public class Weapon {
     private int hit;
 
     public Weapon(String name, int hit) {
+        System.out.println("Weapon constructor called");
         this.name = name;
         this.hit = hit;
     }
@@ -18,6 +19,14 @@ public class Weapon {
 
     public int getHit() {
         return hit;
+    }
+
+    public void myInitMethod(){
+        System.out.println("Weapon myInitMethod called");
+    }
+
+    public void myDestroyMethod(){
+        System.out.println("Weapon myDestroyMethod called");
     }
 
     @Override
