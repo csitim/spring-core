@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-    <bean id="myBeanNameAwarePostProcessor" class="com.csitim.sc.postprocessors.MyBeanNameAwarePostProcessor"></bean>
+    <bean id="myBeanNameAwarePostProcessor" class="com.csitim.sc.postprocessors.MyBeanNameAwarePostProcessor" />
 
    <!-- <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
@@ -14,29 +18,23 @@
         </property>
     </bean> -->
 
-    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-        <property name="converters">
-            <list>
-                <bean class="com.csitim.sc.converter.WeaponConverter"/>
-            </list>
-        </property>
-    </bean>
+    <util:list id="converters">
+        <bean class="com.csitim.sc.converter.WeaponConverter"/>
+    </util:list>
 
-    <bean id="ogre" class="com.csitim.sc.model.Character">
-        <constructor-arg value="Ogre"/>
-        <constructor-arg value="100"/>
-        <constructor-arg value="custom weapon,1000"/>
-    </bean>
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean" p:converters-ref="converters"/>
 
-    <bean id="igen" class="com.csitim.sc.model.Character">
-        <constructor-arg value="Igen"/>
-        <constructor-arg value="100"/>
-        <constructor-arg ref="ogreWeapon"/>
-    </bean>
+    <util:list id="ogreAssociates">
+        <ref bean="igen"/>
+        <ref bean="igen"/>
+    </util:list>
 
-    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod" >
-        <constructor-arg value="Ogre's weapon"/>
-        <constructor-arg value="50"/>
-    </bean>
+    <bean id="ogre" class="com.csitim.sc.model.Character" c:name="Ogre" c:hp="100" c:weapon="custom weapon,1000"
+        p:associates-ref="ogreAssociates"/>
+
+    <bean id="igen" class="com.csitim.sc.model.Character" c:name="Igen" c:hp="100" c:weapon-ref="ogreWeapon"/>
+
+    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod"
+          c:name="Ogre's weapon" c:hit="50"/>
 
 </beans>
