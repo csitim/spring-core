@@ -12,10 +12,9 @@ public class Character {
     private Weapon weapon;
     private List<Character> associates;
 
-    public Character(String name, int hp, Weapon weapon) {
+    public Character(String name, int hp) {
         this.name = name;
         this.hp = hp;
-        this.weapon = weapon;
         this.associates = new ArrayList<>();
     }
 
@@ -29,6 +28,10 @@ public class Character {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public void setAssociates(List<Character> associates) {

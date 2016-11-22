@@ -18,23 +18,29 @@
         </property>
     </bean> -->
 
-    <util:list id="converters">
+    <!-- <util:list id="converters">
         <bean class="com.csitim.sc.converter.WeaponConverter"/>
     </util:list>
 
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean" p:converters-ref="converters"/>
+    -->
 
     <util:list id="ogreAssociates">
         <ref bean="igen"/>
         <ref bean="igen"/>
     </util:list>
 
-    <bean id="ogre" class="com.csitim.sc.model.Character" c:name="Ogre" c:hp="100" c:weapon="custom weapon,1000"
-        p:associates-ref="ogreAssociates"/>
+    <bean id="ogre" class="com.csitim.sc.model.Character" autowire="byType" c:name="Ogre" c:hp="100" />
+        <!--p:weapon-ref="ogreWeapon"
+        p:associates-ref="ogreAssociates"-->
 
-    <bean id="igen" class="com.csitim.sc.model.Character" c:name="Igen" c:hp="100" c:weapon-ref="ogreWeapon"/>
+    <bean id="igen" class="com.csitim.sc.model.Character" c:name="Igen" c:hp="100" p:weapon-ref="weapon"/>
 
-    <bean id="ogreWeapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod"
-          c:name="Ogre's weapon" c:hit="50"/>
+    <bean id="weapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod"
+          c:name="Ogre's first weapon" c:hit="50"/>
+
+    <bean id="ogreWeapon2" class="com.csitim.sc.model.Weapon" c:name="Ogre's secondweapon" c:hit="50"/>
+
+    <bean id="ogreWeapon3" class="com.csitim.sc.model.Weapon" c:name="Ogre's third weapon" c:hit="50" primary="true"/>
 
 </beans>
