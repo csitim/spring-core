@@ -6,10 +6,26 @@
 
     <bean id="myBeanNameAwarePostProcessor" class="com.csitim.sc.postprocessors.MyBeanNameAwarePostProcessor"></bean>
 
+   <!-- <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="com.csitim.sc.model.Weapon" value="com.csitim.sc.propertyeditor.WeaponPropertyEditor"/>
+            </map>
+        </property>
+    </bean> -->
+
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.csitim.sc.converter.WeaponConverter"/>
+            </list>
+        </property>
+    </bean>
+
     <bean id="ogre" class="com.csitim.sc.model.Character">
         <constructor-arg value="Ogre"/>
         <constructor-arg value="100"/>
-        <constructor-arg ref="ogreWeapon"/>
+        <constructor-arg value="custom weapon,1000"/>
     </bean>
 
     <bean id="igen" class="com.csitim.sc.model.Character">
