@@ -10,7 +10,8 @@
            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
+    <context:component-scan base-package="com.csitim.sc"/>
 
     <bean id="myBeanNameAwarePostProcessor" class="com.csitim.sc.postprocessors.MyBeanNameAwarePostProcessor" />
 
@@ -34,11 +35,10 @@
         <ref bean="igen"/>
     </util:list>
 
-    <bean id="ogre" class="com.csitim.sc.model.Character" c:name="Ogre" c:hp="100" p:weapon-ref="ogreWeaponByFactory"/>
-        <!--p:weapon-ref="ogreWeapon"
-        p:associates-ref="ogreAssociates"-->
+    <bean id="ogre" class="com.csitim.sc.model.Character" c:name="Ogre" c:hp="100" p:weapon-ref="ogreWeaponByFactory"
+          p:associates-ref="ogreAssociates"/>
 
-    <bean id="igen" class="com.csitim.sc.model.Character" c:name="Igen" c:hp="100" p:weapon-ref="ogreWeaponByFactory"/>
+    <bean id="igen" class="com.csitim.sc.model.Character" c:name="Igen" c:hp="200" p:weapon-ref="ogreWeaponByFactory"/>
 
     <bean id="weapon" class="com.csitim.sc.model.Weapon" init-method="myInitMethod" destroy-method="myDestroyMethod"
           c:name="Ogre's first weapon" c:hit="50"/>

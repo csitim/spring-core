@@ -16,7 +16,7 @@ public class OgreWeaponFactoryBean implements FactoryBean<Weapon> {
     }
 
     @Override
-    public Class<?> getObjectType() {
+    public Class<Weapon> getObjectType() {
         return Weapon.class;
     }
 

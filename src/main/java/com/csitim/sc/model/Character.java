@@ -1,6 +1,9 @@
 package com.csitim.sc.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,6 @@ public class Character {
     private int hp;
 
     private Weapon weapon;
-
     private List<Character> associates;
 
     public Character(String name, int hp) {
@@ -34,7 +36,7 @@ public class Character {
         return weapon;
     }
 
-    @Required
+    @Required //not working with JavaConfig??
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
