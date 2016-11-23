@@ -1,5 +1,7 @@
 package com.csitim.sc.model;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,9 @@ import java.util.List;
 public class Character {
     private String name;
     private int hp;
+
     private Weapon weapon;
+
     private List<Character> associates;
 
     public Character(String name, int hp) {
@@ -30,6 +34,7 @@ public class Character {
         return weapon;
     }
 
+    @Required
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
